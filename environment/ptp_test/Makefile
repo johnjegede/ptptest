@@ -29,16 +29,14 @@
 
 OUTPUT_FILE = ptpd_stats.txt
 SLEEP_DELAY = 5
-TIME = 432000
-IP_SRC = 10.138.0.2
+TIME = 2000
+IP_SRC = 60.60.0.1
 IP_LOCAL = 192.168.101.3
-IP_DST_1 = 10.138.0.3
-IP_DST_2 = 10.138.0.4
-IP_DST_3 = 10.138.0.5
+IP_DST_1 = 60.60.0.2
 PORT1 = 319
 PORT2 = 320
-IF_NAME = eth0
-INT = 0
+IF_NAME = uesimtun0
+INT = 1
 
 all:
 	${MAKE} test_remote
@@ -60,7 +58,7 @@ master:
 	@echo " Starting PTP test in master mode               "
 	@echo " #################################################"
 	
-	./source/run_ptpd_master.sh $(INT) $(TIME) $(IP_DST_1) $(IP_DST_2) $(IP_DST_3) $(IF_NAME)
+	./source/run_ptpd_master.sh $(INT) $(TIME) $(IP_DST_1) $(IF_NAME)
 	@echo " #################################################"
 	@echo " Finished PTP test                                "
 	@echo " #################################################"
